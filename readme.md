@@ -1,0 +1,1 @@
+bash /path/to/build.sh [commit id] [patch name] [migration rollback steps]
