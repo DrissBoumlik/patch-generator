@@ -1,10 +1,14 @@
 #!/bin/bash
 
-# cd /var/www/html/b2b
-cd /d/Code/Work/Free/b2b/b2b_src
+cd /var/www/html/b2b
+
+echo "Indicate the target branch to pull from :"
+read branch_name
+
+if [[ -z "$branch_name" ]]; then echo "Branch name is missing !!"; exit; fi
+git checkout $branch_name
 git reset --hard HEAD
-# git pull origin preprod
-git pull rlab master
+git pull origin $branch_name
 
 echo "Run composer install ?: (leave it empty if no)"
 read run_composer_install
