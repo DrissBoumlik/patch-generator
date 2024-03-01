@@ -38,7 +38,6 @@ generate_sql() {
 	fi
 	sqlfile="./$patch_name/database/migrate.sql"
 	php artisan migrate --pretend --no-ansi > $sqlfile
-	pattern="AddColumnMotifAnnulation"
 	bakfile="./$patch_name/database/_migrate.sql"
 	sed 's/[^ ]*:[^ ]* //' $sqlfile > $bakfile
 	mv $bakfile $sqlfile
@@ -62,7 +61,7 @@ git diff-tree -r --no-commit-id --name-only $commit_id master | xargs tar -cf $p
 # TODO: copy remaining js/css files
 if [[ -n $generate_assets ]]; then # check if $generate_assets is set
 	print "Generating public assets"
-	# npm run prod
+	npm run prod
 	
 	print "Copying public assets"
 	mkdir ./$patch_name/public/
