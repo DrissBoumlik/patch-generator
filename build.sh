@@ -3,14 +3,14 @@
 
 echo "Enter the commit id:"
 read commit_id
-if [[ -z "$commit_id" ]]; then
+if [[ -z "$commit_id" ]]; then # check if $commit_id is not set
     echo "Commit ID is mandatory !!"
 	exit
 fi
 current_date=$(date +"%d_%m_%Y")
 echo "Enter the patch name [$current_date]:"
 read patch_name  # [direcory patch name]
-if [[ -z "$patch_name" ]]; then
+if [[ -z "$patch_name" ]]; then # check if $patch_name is not set
     # echo "Patch name is mandatory !!"
 	# exit
 	patch_name=$current_date
