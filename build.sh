@@ -1,6 +1,15 @@
 #!/bin/bash
 
 
+current_branch=`git rev-parse --abbrev-ref HEAD`
+if [ $current_branch != 'master' ]; then
+	echo "You should switch to the master branch adn retry !!"
+	exit
+fi
+
+echo "Would you like to pull the update ? (leave empty for no)"
+read pull_updates
+
 echo "Enter the commit id:"
 read commit_id
 if [[ -z "$commit_id" ]]; then # check if $commit_id is not set
@@ -45,6 +54,11 @@ generate_sql() {
 	echo -e "\n  Restoring the original state of the database\n"
 	php artisan migrate
 }
+
+if [[ -n $pull_updates ]]; then
+	print "Pulling the latest changes from remote branch"
+	git pull origin master
+fi
 
 # ===============================================================
 print "Removing previous patches"
