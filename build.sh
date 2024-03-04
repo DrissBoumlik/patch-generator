@@ -55,6 +55,7 @@ generate_sql() {
 	php artisan migrate
 }
 
+git checkout master
 if [[ -n $pull_updates ]]; then
 	print "Pulling the latest changes from remote branch"
 	git pull origin master
