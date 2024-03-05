@@ -5,10 +5,6 @@ cd /var/www/html/b2b
 echo "Indicate the target branch to pull from :"
 read branch_name
 
-if [[ -z "$branch_name" ]]; then echo "Branch name is missing !!"; exit; fi
-git checkout $branch_name
-git reset --hard HEAD
-git pull origin $branch_name
 
 echo "Run composer install ?: (leave it empty if no)"
 read run_composer_install
@@ -30,6 +26,11 @@ read run_composer_dumpautoload
 
 echo "Edit storage, database, web_logs_ws permissions ?: (leave it empty if no)"
 read run_chmod
+
+if [[ -z "$branch_name" ]]; then echo "Branch name is missing !!"; exit; fi
+git checkout $branch_name
+git reset --hard HEAD
+git pull origin $branch_name
 
 if [[ -n "$run_composer_install" ]]; then composer install; fi
 if [[ -n "$run_npm_install" ]]; then npm install; fi
