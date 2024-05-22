@@ -33,10 +33,6 @@ read rollback_steps
 echo "Run npm run prod ? (leave it empty if no):"
 read generate_assets
 
-print_done() {
-	sleep 0.5
-	echo -e "\n  Done\n"
-}
 print() {
 	echo -e "\n"
 	echo -e "  ================================================================"
