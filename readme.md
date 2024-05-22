@@ -1,5 +1,9 @@
-run this patch 
+## Generate the package
 
-`bash /path/to/build.sh [commit id] [patch name] [migration rollback steps]`
+`|> bash path/to/build.sh`
 
-`bash /path/to/build.sh 8ab240a1 29_02_2024 4`
+## Update the preprod & staging server
+
+- preprod : `|> bash /var/www/html/_scripts/preprod.sh`
+
+- staging : `|> bash /var/www/html/_scripts/staging.sh`
